@@ -14,4 +14,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: Hint Button Clicked");
     }
+    
+    
 }
