@@ -4,6 +4,7 @@ using UnityEngine;
 public class QuizScriptableObject: ScriptableObject
 {
     public string Question;
+    public string Code;
     public string[] Answers;
     public int CorrectAnswerIndex;
     public string Hint;
