@@ -25,6 +25,8 @@ namespace Quiz
             
             _correctAnswerIndex = quiz.CorrectAnswerIndex;
             _currentQuizData = quiz;
+            
+            QuizCanvasManager.HintPopup.HideHint();
         }
 
         private void OnBackButtonClicked()
@@ -35,7 +37,7 @@ namespace Quiz
         private void OnHintButtonClicked()
         {
             Debug.Log("Hint button clicked");
-            Debug.Log($"Hint is: {_currentQuizData.Hint}");
+            QuizCanvasManager.HintPopup.ShowHint(_currentQuizData.Hint);
         }
 
         private void OnAnswerButtonClicked(int answerindex)

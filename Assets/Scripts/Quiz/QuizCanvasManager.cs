@@ -21,9 +21,9 @@ namespace Quiz
 
         public Button HintButton;
         public TMP_Text QuestionText;
+        public HintPopup HintPopup;
 
         public event HintButtonClicked OnHintButtonClicked;
-
         public event AnswerButtonClicked OnAnswerButtonClicked;
         public event BackButtonClicked OnBackButtonClicked;
         
