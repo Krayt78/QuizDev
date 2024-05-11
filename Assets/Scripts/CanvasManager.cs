@@ -14,6 +14,12 @@ public class CanvasManager : MonoBehaviour
     public delegate void AnswerButtonClicked(int answerIndex);
     public event AnswerButtonClicked OnAnswerButtonClicked;
     
+    public delegate void QuizSelected(int quizIndex);
+    public event QuizSelected OnQuizSelected;
+    
+    public delegate void BackButtonClicked();
+    public event BackButtonClicked OnBackButtonClicked;
+    
     [Header("Canvases")]
     public Canvas SplashScreenCanvas;
     public Canvas QuizSelectionCanvas;
@@ -34,12 +40,18 @@ public class CanvasManager : MonoBehaviour
         var quizCanvasManager = FindObjectOfType<QuizCanvasManager>();
         quizCanvasManager.OnAnswerButtonClicked += _OnAnswerButtonClicked;
         quizCanvasManager.OnHintButtonClicked += _OnHintButtonClicked;
+        quizCanvasManager.OnBackButtonClicked += _OnBackButtonClicked;
         quizCanvasManager.Initialize(quizes[0]);
+    }
+    
+    private void _OnBackButtonClicked()
+    {
+        OnBackButtonClicked?.Invoke();
     }
     
     private void _OnQuizSelected(int quizIndex)
     {
-        
+        OnQuizSelected?.Invoke(quizIndex);
     }
 
     private void _OnAnswerButtonClicked(int answerIndex)

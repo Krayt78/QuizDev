@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2670631457579545311}
   - component: {fileID: 834938628108210240}
   - component: {fileID: 7716924456726124446}
+  - component: {fileID: 7121959283976228513}
   m_Layer: 5
   m_Name: QuizSelectionButtonPrefab
   m_TagString: Untagged
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7121959283976228513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772170096807946638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc308794aa4e47eead405355fecd94b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quizNameText: {fileID: 6087032946854320730}
+  button: {fileID: 7716924456726124446}
 --- !u!1 &8134335138056609465
 GameObject:
   m_ObjectHideFlags: 0

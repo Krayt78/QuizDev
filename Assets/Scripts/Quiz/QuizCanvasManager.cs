@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,13 +25,18 @@ namespace Quiz
 
         public event AnswerButtonClicked OnAnswerButtonClicked;
         public event BackButtonClicked OnBackButtonClicked;
+        
+        private List<GameObject> _answerButtons = new List<GameObject>();
 
         public void Initialize(QuizScriptableObject quiz)
         {
+            ClearPreviousAnswers();
+            
             for (var i = 0; i < quiz.Answers.Length; i++)
             {
                 var answerIndex = i;
                 var button = Instantiate(AnswerButtonPrefab, AnswerButtonContainer);
+                _answerButtons.Add(button);
                 var buttonComponent = button.GetComponent<Button>();
                 buttonComponent.onClick.AddListener(() => _OnAnswerButtonClicked(answerIndex));
                 button.GetComponentInChildren<TMP_Text>().text = quiz.Answers[i];
@@ -40,6 +46,16 @@ namespace Quiz
 
             HintButton.onClick.AddListener(_OnHintButtonClicked);
             BackButton.onClick.AddListener(_OnBackButtonClicked);
+        }
+        
+        private void ClearPreviousAnswers()
+        {
+            foreach (var answerButton in _answerButtons)
+            {
+                Destroy(answerButton);
+            }
+            
+            _answerButtons.Clear();
         }
 
         private void _OnBackButtonClicked()

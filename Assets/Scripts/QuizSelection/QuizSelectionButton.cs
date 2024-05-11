@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace QuizSelection
         public delegate void QuizSelected(int quizIndex);
         public event QuizSelected OnQuizSelected;
         
-        public Text quizNameText;
+        public TMP_Text quizNameText;
         public Button button;
         
         private int _quizIndex;

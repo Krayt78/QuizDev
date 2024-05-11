@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int CurrentQuizIndex;
     
     private CanvasManager _canvasManager;
+    private Quiz.Quiz _quiz;
 
     enum GameState
     {
@@ -21,26 +22,37 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _quiz = FindObjectOfType<Quiz.Quiz>();
+        
         _canvasManager = FindObjectOfType<CanvasManager>();
         _canvasManager.Initialize(Quizzes);
         
         _canvasManager.OnSplashScreenButtonClicked += () => UpdateGameState(GameState.QuizSelection);
         _canvasManager.OnHintButtonClicked += OnHintButtonClicked;
         _canvasManager.OnAnswerButtonClicked += OnAnswerSelected;
+        _canvasManager.OnQuizSelected += OnQuizSelected;
+        _canvasManager.OnBackButtonClicked += OnBackButtonClicked;
         
         _gameState = GameState.SplashScreen;
-        UpdateGameState(GameState.SplashScreen, true);
-        
-        
+        UpdateGameState(GameState.SplashScreen);
     }
-    
-    private void UpdateGameState(GameState gameState, bool isInitialSetup = false)
+
+    private void OnBackButtonClicked()
     {
-        if (isInitialSetup)
-        {
-            _gameState = gameState;
-            return;
-        }
+        Debug.Log("GameManager: Back Button Clicked");
+        UpdateGameState(GameState.QuizSelection);
+    }
+
+    private void OnQuizSelected(int quizIndex)
+    {
+        Debug.Log("GameManager: Quiz Selected: " + quizIndex);
+        _quiz.Initialize(Quizzes[quizIndex]);
+        UpdateGameState(GameState.Quiz);
+    }
+
+    private void UpdateGameState(GameState gameState)
+    {
+        _gameState = gameState;
         
         switch (gameState)
         {

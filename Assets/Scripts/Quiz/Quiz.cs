@@ -11,11 +11,6 @@ namespace Quiz
         private int _correctAnswerIndex;
         private QuizScriptableObject _currentQuizData;
 
-        private void Start()
-        {
-            Initialize(QuizScriptableObject);
-        }
-
         public void Initialize(QuizScriptableObject quiz)
         {
             Debug.Log($"Quiz initialized with question: {quiz.Question}");
