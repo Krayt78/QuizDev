@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 834938628108210240}
   - component: {fileID: 7716924456726124446}
   m_Layer: 5
-  m_Name: AnswerButton
+  m_Name: QuizSelectionButtonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
