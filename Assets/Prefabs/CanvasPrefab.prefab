@@ -930,7 +930,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Quizzes:
   - {fileID: 11400000, guid: 90fc49c3e2e2842ecbf392038bdf6c5b, type: 2}
-  - {fileID: 11400000, guid: 6940ea3612028476895b25d3d1b4c7ab, type: 2}
+  - {fileID: 11400000, guid: 2396f4887205640a88e5d8c1a8f224f6, type: 2}
+  - {fileID: 11400000, guid: b03c436fe40764c5e9a89bf743cd8321, type: 2}
+  - {fileID: 11400000, guid: aa4373615d3e5468a916f4470eb0e223, type: 2}
+  - {fileID: 11400000, guid: a2cb67daa65414c7fb9b21f59e044e66, type: 2}
   CurrentQuizIndex: 0
 --- !u!1 &6279065600469785660
 GameObject:
