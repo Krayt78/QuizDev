@@ -3,7 +3,7 @@ using QuizSelection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuizSelectionManager: MonoBehaviour
+public class QuizSelectionCanvasManager: MonoBehaviour
 {
     public delegate void QuizSelected(int quizIndex);
     public event QuizSelected OnQuizSelected;

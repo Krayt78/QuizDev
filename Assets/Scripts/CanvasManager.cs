@@ -19,15 +19,15 @@ public class CanvasManager : MonoBehaviour
     public Canvas QuizSelectionCanvas;
     public Canvas QuizCanvas;
     
-    private SplashScreenManager _splashScreenManager;
+    private SplashScreenCanvasManager _splashScreenCanvasManager;
     private QuizCanvasManager _quizCanvasManager;
 
     public void Initialize(List<QuizScriptableObject> quizes)
     {
-        _splashScreenManager = FindObjectOfType<SplashScreenManager>();
-        _splashScreenManager.OnSplashScreenButtonClicked += () => OnSplashScreenButtonClicked?.Invoke();
+        _splashScreenCanvasManager = FindObjectOfType<SplashScreenCanvasManager>();
+        _splashScreenCanvasManager.OnSplashScreenButtonClicked += () => OnSplashScreenButtonClicked?.Invoke();
         
-        var selectQuizManager = FindObjectOfType<QuizSelectionManager>();
+        var selectQuizManager = FindObjectOfType<QuizSelectionCanvasManager>();
         selectQuizManager.Initialize(quizes);
         selectQuizManager.OnQuizSelected += _OnQuizSelected;
         

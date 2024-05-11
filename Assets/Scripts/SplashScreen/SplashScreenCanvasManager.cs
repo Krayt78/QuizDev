@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SplashScreenManager : MonoBehaviour
+public class SplashScreenCanvasManager : MonoBehaviour
 {
     public delegate void SplashScreenButtonClicked();
     public event SplashScreenButtonClicked OnSplashScreenButtonClicked;
