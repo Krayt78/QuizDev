@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 8764482209104343812}
   - component: {fileID: 5163821729036653419}
   m_Layer: 5
-  m_Name: QuestionTitle
+  m_Name: Question
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1494,8 +1494,8 @@ MonoBehaviour:
   AnswerButtonContainer: {fileID: 7259734992800475414}
   BackButton: {fileID: 7321336875113095722}
   HintButton: {fileID: 3950297485871622978}
-  QuestionText: {fileID: 9046351784499359127}
-  TitleText: {fileID: 5163821729036653419}
+  CodeText: {fileID: 9046351784499359127}
+  QuestionText: {fileID: 5163821729036653419}
   HintPopup: {fileID: 5308097738610387033}
 --- !u!1 &7385986225543669681
 GameObject:
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 3224748772274735495}
   - component: {fileID: 4126288328049215690}
   m_Layer: 5
-  m_Name: QuestionBox (1)
+  m_Name: QuestionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2020,7 +2020,7 @@ GameObject:
   - component: {fileID: 6974576698635752773}
   - component: {fileID: 9046351784499359127}
   m_Layer: 5
-  m_Name: QuestionText
+  m_Name: Code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

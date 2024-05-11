@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Quiz
@@ -20,8 +21,8 @@ namespace Quiz
         [Header("Quiz Buttons")] public Button BackButton;
 
         public Button HintButton;
+        public TMP_Text CodeText;
         public TMP_Text QuestionText;
-        public TMP_Text TitleText;
         public HintPopup HintPopup;
 
         public event HintButtonClicked OnHintButtonClicked;
@@ -63,8 +64,8 @@ namespace Quiz
                 }
             }
 
+            CodeText.text = quiz.Code;
             QuestionText.text = quiz.Question;
-            TitleText.text = quiz.name;
 
             HintButton.onClick.AddListener(_OnHintButtonClicked);
             BackButton.onClick.AddListener(_OnBackButtonClicked);
