@@ -17,19 +17,21 @@ public class GameManager : MonoBehaviour
     }
     
     private GameState _gameState;
-    
 
     // Start is called before the first frame update
     private void Start()
     {
         _canvasManager = FindObjectOfType<CanvasManager>();
+        _canvasManager.Initialize(Quizzes);
+        
+        _canvasManager.OnSplashScreenButtonClicked += () => UpdateGameState(GameState.QuizSelection);
         _canvasManager.OnHintButtonClicked += OnHintButtonClicked;
         _canvasManager.OnAnswerButtonClicked += OnAnswerSelected;
         
-        _gameState = GameState.Quiz;
-        UpdateGameState(GameState.Quiz);
+        _gameState = GameState.SplashScreen;
+        UpdateGameState(GameState.SplashScreen, true);
         
-        _canvasManager.Initialize(Quizzes);
+        
     }
     
     private void UpdateGameState(GameState gameState, bool isInitialSetup = false)
