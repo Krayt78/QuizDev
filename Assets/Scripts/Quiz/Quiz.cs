@@ -23,9 +23,15 @@ namespace Quiz
             
             QuizCanvasManager.OnAnswerButtonClicked += OnAnswerButtonClicked;
             QuizCanvasManager.OnHintButtonClicked += OnHintButtonClicked;
+            QuizCanvasManager.OnBackButtonClicked += OnBackButtonClicked;
             
             _correctAnswerIndex = quiz.CorrectAnswerIndex;
             _currentQuizData = quiz;
+        }
+
+        private void OnBackButtonClicked()
+        {
+            Debug.Log("Back button clicked");
         }
 
         private void OnHintButtonClicked()
