@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
   m_Name: 6-E
   m_EditorClassIdentifier: 
-  Question: a = 4;<br> b = 7;<br> if (a * 2 > b) {<br>     solution = A;<br> } else
-    {<br>     solution = B;<br> }<br>
+  Question: Which Case Does This Code Choose?<br> a = 4;<br> b = 7;<br> if (a * 2
+    > b) {<br>     Case = A;<br> } else {<br>     Case = B; }
   Answers:
   - Solution A
   - Solution B
