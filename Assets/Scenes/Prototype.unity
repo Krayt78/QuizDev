@@ -285,36 +285,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &781168896 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6783837465954961948, guid: eb9a815f38f504214bfb69c8c553a48c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5762450765415724397}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &781168898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781168896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,59 +485,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90fc49c3e2e2842ecbf392038bdf6c5b,
+        type: 2}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2396f4887205640a88e5d8c1a8f224f6,
+        type: 2}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b03c436fe40764c5e9a89bf743cd8321,
+        type: 2}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa4373615d3e5468a916f4470eb0e223,
+        type: 2}
+    - target: {fileID: 2781818163841090211, guid: eb9a815f38f504214bfb69c8c553a48c,
+        type: 3}
+      propertyPath: Quizzes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a2cb67daa65414c7fb9b21f59e044e66,
+        type: 2}
     - target: {fileID: 6266666896258810978, guid: eb9a815f38f504214bfb69c8c553a48c,
         type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178454141388518863, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6783837465954961948, guid: eb9a815f38f504214bfb69c8c553a48c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 781168898}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb9a815f38f504214bfb69c8c553a48c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

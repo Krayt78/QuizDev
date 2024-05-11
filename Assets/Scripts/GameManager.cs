@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _quiz = FindObjectOfType<Quiz.Quiz>();
+        _quiz.OnCorrectAnswerClicked += OnCorrectAnswerClicked;
         
         _canvasManager = FindObjectOfType<CanvasManager>();
         _canvasManager.Initialize(Quizzes);
@@ -37,6 +39,21 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.SplashScreen);
     }
 
+    private void OnCorrectAnswerClicked()
+    {
+        if (_gameState != GameState.Quiz) return;
+        
+        if(CurrentQuizIndex < Quizzes.Count - 1)
+        {
+            CurrentQuizIndex++;
+            _quiz.Initialize(Quizzes[CurrentQuizIndex]);
+        }
+        else
+        {
+            UpdateGameState(GameState.QuizSelection);
+        }
+    }
+
     private void OnBackButtonClicked()
     {
         Debug.Log("GameManager: Back Button Clicked");
@@ -47,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: Quiz Selected: " + quizIndex);
         _quiz.Initialize(Quizzes[quizIndex]);
+        CurrentQuizIndex = quizIndex;
         UpdateGameState(GameState.Quiz);
     }
 

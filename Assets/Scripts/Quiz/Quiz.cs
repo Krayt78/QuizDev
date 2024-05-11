@@ -5,6 +5,9 @@ namespace Quiz
 {
     public class Quiz:MonoBehaviour
     {
+        public delegate void CorrectAnswerClicked();
+        public event CorrectAnswerClicked OnCorrectAnswerClicked;
+        
         public QuizScriptableObject QuizScriptableObject;
         public QuizCanvasManager QuizCanvasManager;
         
@@ -38,7 +41,17 @@ namespace Quiz
         private void OnAnswerButtonClicked(int answerindex)
         {
             Debug.Log($"Answer button clicked with index: {answerindex}");
-            Debug.Log(answerindex == _correctAnswerIndex ? "Correct answer!" : "Wrong answer!");
+            if(answerindex == _correctAnswerIndex)
+            {
+                Debug.Log("Correct answer!");
+                //do somethimg here
+                
+                OnCorrectAnswerClicked?.Invoke();
+            }
+            else
+            {
+                Debug.Log("Wrong answer!");
+            }
         }
     }
 }
