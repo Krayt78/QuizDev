@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -37,9 +38,28 @@ namespace Quiz
                 var answerIndex = i;
                 var button = Instantiate(AnswerButtonPrefab, AnswerButtonContainer);
                 _answerButtons.Add(button);
-                var buttonComponent = button.GetComponent<Button>();
-                buttonComponent.onClick.AddListener(() => _OnAnswerButtonClicked(answerIndex));
-                button.GetComponentInChildren<TMP_Text>().text = quiz.Answers[i];
+                var answerButton = button.GetComponent<AnswerButton>();
+                answerButton.AnswerButtonComponent.onClick.AddListener(() => _OnAnswerButtonClicked(answerIndex));
+                answerButton.SetText(quiz.Answers[i]);
+
+                switch (i)
+                {
+                    case 0:
+                        answerButton.SetColor(Utils.HexToColor(Constants.FIRST_ANSWER_BUTTON_COLOUR));
+                        break;
+                    case 1:
+                        answerButton.SetColor(Utils.HexToColor(Constants.SECOND_ANSWER_BUTTON_COLOUR));
+                        break;
+                    case 2:
+                        answerButton.SetColor(Utils.HexToColor(Constants.THIRD_ANSWER_BUTTON_COLOUR));
+                        break;
+                    case 3:
+                        answerButton.SetColor(Utils.HexToColor(Constants.FOURTH_ANSWER_BUTTON_COLOUR));
+                        break;
+                    default:
+                        throw new Exception("Invalid answer button index");
+                    
+                }
             }
 
             QuestionText.text = quiz.Question;

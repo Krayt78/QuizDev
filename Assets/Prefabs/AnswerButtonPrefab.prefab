@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 834938628108210240}
   - component: {fileID: 7716924456726124446}
   - component: {fileID: 1553666912801201175}
+  - component: {fileID: 747488103882985753}
   m_Layer: 5
   m_Name: AnswerButtonPrefab
   m_TagString: Untagged
@@ -258,6 +259,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 4, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &747488103882985753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772170096807946638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e122ad56589ff467ea20ff15106d304b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnswerButtonColorImage: {fileID: 1884360525361811195}
+  AnswerButtonComponent: {fileID: 7716924456726124446}
+  AnswerText: {fileID: 6087032946854320730}
 --- !u!1 &8134335138056609465
 GameObject:
   m_ObjectHideFlags: 0
