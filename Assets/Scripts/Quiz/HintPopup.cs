@@ -1,17 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class HintPopup : MonoBehaviour
+public class HintPopup : MonoBehaviour, IDeselectHandler
 {
-    public Button escapeButton;
     public TMP_Text hintText;
-        
-    // Start is called before the first frame update
-    void Start()
-    {
-        escapeButton.onClick.AddListener(() => gameObject.SetActive(false));
-    }
     
     public void SetHintText(string text)
     {
@@ -27,5 +20,11 @@ public class HintPopup : MonoBehaviour
     {
         SetHintText(hint);
         gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+    
+    public void OnDeselect(BaseEventData eventData)
+    {
+        HideHint();
     }
 }
