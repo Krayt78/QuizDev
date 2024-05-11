@@ -31,8 +31,8 @@ Material:
     - _Power: 2.71
     - _Shine: 0.48
     m_Colors:
-    - _Color: {r: 0, g: 0.5943396, b: 0.065370634, a: 0}
-    - _FresnalColor: {r: 0.6666667, g: 1, b: 0.7559158, a: 0}
+    - _Color: {r: 0, g: 0.3301887, b: 0.036929015, a: 0}
+    - _FresnalColor: {r: 0.16789784, g: 0.7264151, b: 0.319026, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5610448374785100000
 MonoBehaviour:
