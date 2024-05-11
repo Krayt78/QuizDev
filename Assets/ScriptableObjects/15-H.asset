@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
   m_Name: 15-H
   m_EditorClassIdentifier: 
-  Question: "x= 5/2;\Ly=0<br> For (i=0; i>x;i++)\L{<br> y++;\L}<br> y=?<br>"
+  Question: Which Case Does This Code Choose?<br> int a = 7/3, <br> float b = 10/3;<br>
+    if (a > 2 && b > 3) {<br>     case = 'A';<br> } else {<br>     case = 'B';<br>
+    }<br>
   Answers:
-  - 2.5
-  - 2
-  - 3
-  CorrectAnswerIndex: 2
-  Hint: "The \u201Cfor\u201D loop is similar to the \u201Cwhile\u201D loop, it will
-    loop as many times until I is grater than x, while increasing by one after each
-    loop"
+  - Solution A
+  - SolutionB
+  CorrectAnswerIndex: 1
+  Hint: "The sign \u201C&&\u201D means that both statements have to be true for the
+    if statement to be true, but careful! A is an integer and can only be a whole
+    number without decimals!"
