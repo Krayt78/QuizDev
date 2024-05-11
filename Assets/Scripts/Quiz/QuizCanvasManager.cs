@@ -21,6 +21,7 @@ namespace Quiz
 
         public Button HintButton;
         public TMP_Text QuestionText;
+        public TMP_Text TitleText;
         public HintPopup HintPopup;
 
         public event HintButtonClicked OnHintButtonClicked;
@@ -63,6 +64,7 @@ namespace Quiz
             }
 
             QuestionText.text = quiz.Question;
+            TitleText.text = quiz.name;
 
             HintButton.onClick.AddListener(_OnHintButtonClicked);
             BackButton.onClick.AddListener(_OnBackButtonClicked);
