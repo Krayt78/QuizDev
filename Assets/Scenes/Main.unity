@@ -595,6 +595,107 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
+    - target: {fileID: 9190774135582114461, guid: 9e8da25e3fca34b938973020026fd3ac,
+        type: 3}
+      propertyPath: Quizzes.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7de79c9c4b6a548ab8f725236b160387,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

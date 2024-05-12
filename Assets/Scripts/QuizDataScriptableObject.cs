@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "QuizScriptableObject", menuName = "ScriptableObjects/Quiz", order = 1)]
-public class QuizScriptableObject: ScriptableObject
+[CreateAssetMenu(fileName = "QuizScriptableObject", menuName = "ScriptableObjects/QuizData", order = 1)]
+public class QuizDataScriptableObject: ScriptableObject
 {
     public string Question;
     public string Code;
