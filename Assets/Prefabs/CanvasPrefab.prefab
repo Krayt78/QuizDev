@@ -1369,7 +1369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b7095911944da1aee5fc661eacd523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizSelectionButtons: []
+  FirstLevelSelectionButtons: []
+  SecondLevelSelectionButtons: []
+  ThirdLevelSelectionButtons: []
   quizSelectionButtonPrefab: {fileID: 5772170096807946638, guid: 86d67998af33e4417af974614792c3ec,
     type: 3}
   quizSelectionButtonContainer: {fileID: 4809994929024364960}
@@ -1513,6 +1515,9 @@ MonoBehaviour:
   CodeText: {fileID: 9046351784499359127}
   QuestionText: {fileID: 5163821729036653419}
   HintPopup: {fileID: 5308097738610387033}
+  Background1: {fileID: 0}
+  Background2: {fileID: 0}
+  Background3: {fileID: 0}
 --- !u!1 &7385986225543669681
 GameObject:
   m_ObjectHideFlags: 0
