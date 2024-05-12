@@ -18,6 +18,7 @@ MonoBehaviour:
   - a = 5
   - a = 3
   - a = 4
+  timeToAppear: 2
   CorrectAnswerIndex: 1
   Hint: "the -- method is also called \u201Cdecrement\u201D, in other words, decrease
     by one or \u201C-1\u201D"
