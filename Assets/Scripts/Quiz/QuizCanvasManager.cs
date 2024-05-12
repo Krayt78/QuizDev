@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Quiz
@@ -14,6 +15,8 @@ namespace Quiz
         public delegate void BackButtonClicked();
 
         public delegate void HintButtonClicked();
+        
+        public delegate void TimerRanOut();
 
         public GameObject AnswerButtonPrefab;
         public Transform AnswerButtonContainer;
@@ -23,6 +26,7 @@ namespace Quiz
         public Button HintButton;
         public TMP_Text CodeText;
         public TMP_Text QuestionText;
+        public TMP_Text TimerText;
         public HintPopup HintPopup;
         
         public GameObject Background1;
@@ -32,8 +36,11 @@ namespace Quiz
         public event HintButtonClicked OnHintButtonClicked;
         public event AnswerButtonClicked OnAnswerButtonClicked;
         public event BackButtonClicked OnBackButtonClicked;
+        public event TimerRanOut OnTimerRanOut;
         
         private List<GameObject> _answerButtons = new List<GameObject>();
+
+        private float remainingTimerTime;
 
         public void Initialize(QuizScriptableObject quiz, bool isFirstInitialization = false)
         {
@@ -88,6 +95,20 @@ namespace Quiz
                 CodeText.text += codeCharacter;
                 yield return new WaitForSeconds(timeBetweenLetters);
             }
+        }
+
+        public IEnumerator StartTimer(float time)
+        {
+            remainingTimerTime = time;
+            yield return new WaitUntil(TimerIsDone);
+            OnTimerRanOut?.Invoke();
+        }
+
+        bool TimerIsDone()
+        {
+            remainingTimerTime -= Time.deltaTime;
+            TimerText.text = remainingTimerTime.ToString();
+            return remainingTimerTime <= 0;
         }
         
         private void ClearPreviousAnswers()

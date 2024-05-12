@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
 namespace Quiz
 {
     public class Quiz:MonoBehaviour
     {
+        enum difficultySetting
+        {
+        Easy,
+        Medium,
+        Hard,
+        }
+        private difficultySetting difficulty;
         public delegate void CorrectAnswerClicked();
         public event CorrectAnswerClicked OnCorrectAnswerClicked;
         
@@ -21,16 +29,60 @@ namespace Quiz
             QuizCanvasManager.OnAnswerButtonClicked += OnAnswerButtonClicked;
             QuizCanvasManager.OnHintButtonClicked += OnHintButtonClicked;
             QuizCanvasManager.OnBackButtonClicked += OnBackButtonClicked;
+            QuizCanvasManager.OnTimerRanOut += OnTimerRanOut;
             
             _correctAnswerIndex = quiz.CorrectAnswerIndex;
             _currentQuizData = quiz;
             
             QuizCanvasManager.HintPopup.HideHint();
+            DetermineDifficulty();
+            SetTimer();
+        }
+
+        private void OnTimerRanOut()
+        {
+            LoseGame();
+        }
+        
+        private void LoseGame()
+        {
+            QuizCanvasManager.StopAllCoroutines();
+            //QuizCanvasManager.ShowLosePopup();
         }
 
         private void OnBackButtonClicked()
         {
             Debug.Log("Back button clicked");
+        }
+
+        void DetermineDifficulty()
+        {
+            if (_currentQuizData.name.Contains("E"))
+                difficulty = difficultySetting.Easy;
+            else if (_currentQuizData.name.Contains("M"))
+            {
+                difficulty = difficultySetting.Medium;
+            } else if (_currentQuizData.name.Contains("H"))
+            {
+                difficulty = difficultySetting.Hard;
+            } else 
+                Debug.LogWarning("Difficulty not set");
+        }
+
+        void SetTimer()
+        {
+            if (difficulty == difficultySetting.Easy)
+            {
+                StartCoroutine(QuizCanvasManager.StartTimer(90));
+            }
+            else if (difficulty == difficultySetting.Medium)
+            {
+                StartCoroutine(QuizCanvasManager.StartTimer(60));
+            }
+            else if (difficulty == difficultySetting.Hard)
+            {
+                StartCoroutine(QuizCanvasManager.StartTimer(45));
+            }
         }
 
         private void OnHintButtonClicked()
@@ -52,7 +104,9 @@ namespace Quiz
             else
             {
                 Debug.Log("Wrong answer!");
+                LoseGame();
             }
+            QuizCanvasManager.StopAllCoroutines();
         }
     }
 }
