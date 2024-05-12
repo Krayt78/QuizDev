@@ -8,13 +8,16 @@ public class QuizSelectionCanvasManager: MonoBehaviour
     public delegate void QuizSelected(int quizIndex);
     public event QuizSelected OnQuizSelected;
     
+    public delegate void LevelCategorySelected(int levelCategory);
+    public event LevelCategorySelected OnLevelCategorySelected;
+    
     public List<Button> FirstLevelSelectionButtons;
     public List<Button> SecondLevelSelectionButtons;
     public List<Button> ThirdLevelSelectionButtons;
     
-    public Transform firstLevelPanel;
-    public Transform secondLevelPanel;
-    public Transform thirdLevelPanel;
+    public LevelSelectionPanel firstLevelPanel;
+    public LevelSelectionPanel secondLevelPanel;
+    public LevelSelectionPanel thirdLevelPanel;
     
     public Transform firstLevelContainer;
     public Transform secondLevelContainer;
@@ -53,6 +56,34 @@ public class QuizSelectionCanvasManager: MonoBehaviour
             quizComponent.OnQuizSelected += _OnQuizSelected;
         }
         
+        firstLevelPanel.OnNextButtonPressed += () =>
+        {
+            OnLevelCategorySelected?.Invoke(1);
+            firstLevelPanel.gameObject.SetActive(false);
+            secondLevelPanel.gameObject.SetActive(true);
+        };
+        
+        secondLevelPanel.OnBeforeButtonPressed += () =>
+        {
+            OnLevelCategorySelected?.Invoke(0);
+            firstLevelPanel.gameObject.SetActive(true);
+            secondLevelPanel.gameObject.SetActive(false);
+        };
+        secondLevelPanel.OnNextButtonPressed += () =>
+        {
+            OnLevelCategorySelected?.Invoke(2);
+            secondLevelPanel.gameObject.SetActive(false);
+            thirdLevelPanel.gameObject.SetActive(true);
+        };
+        
+        thirdLevelPanel.OnBeforeButtonPressed += () =>
+        {
+            OnLevelCategorySelected?.Invoke(1);
+            secondLevelPanel.gameObject.SetActive(true);
+            thirdLevelPanel.gameObject.SetActive(false);
+        };
+        
+        OnLevelCategorySelected?.Invoke(0);
         firstLevelPanel.gameObject.SetActive(true);
         secondLevelPanel.gameObject.SetActive(false);
         thirdLevelPanel.gameObject.SetActive(false);
