@@ -13,7 +13,7 @@ public class JumpBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.normalizedTime >= 0.92f)
+        if (stateInfo.normalizedTime >= 0.99f)
         {
             animator.SetBool("currentlyJumping", false);
         }

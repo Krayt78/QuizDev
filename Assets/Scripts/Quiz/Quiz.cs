@@ -62,6 +62,8 @@ namespace Quiz
         
         private void LoseGame()
         {
+            StartCoroutine(FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimation(false));
+            
             QuizCanvasManager.StopAllCoroutines();
             var quizData = Utils.SelectRandomQuizVariation(_quizVariations, currentQuizDataIndex);
             
@@ -124,6 +126,7 @@ namespace Quiz
                 //do somethimg here
                 
                 OnCorrectAnswerClicked?.Invoke();
+                StartCoroutine(FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimation(true));
             }
             else
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,23 @@ using UnityEngine;
 public class CodyAnimationController : MonoBehaviour
 {
     Animator animator;
-    IEnumerator MoveCodyWhileInAnimation()
+    public Transform targetLocation;
+
+    private void Awake()
     {
-        yield return new WaitUntil(() => animator.GetBool("currentlyJumping") == false);
+        animator = GetComponent<Animator>();
+    }
+
+    public IEnumerator MoveCodyWhileInAnimation(bool isSuccessfullyJump)
+    {
+        animator.SetBool("currentlyJumping", true);
+        animator.SetTrigger(isSuccessfullyJump ? "jumpSuccess" : "jumpFail");
+        yield return new WaitUntil(WaitUntilENdOfQnimation);
+        animator.Play("Idle");
+    }
+
+    bool WaitUntilENdOfQnimation()
+    {
+        return animator.GetBool("currentlyJumping") == false;
     }
 }
