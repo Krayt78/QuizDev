@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Utils
@@ -15,5 +16,10 @@ public static class Utils
             a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
         }
         return new Color32(r,g,b,a);
+    }
+    
+    public static QuizDataScriptableObject SelectRandomQuizVariation(QuizVariationsScriptableObject quizVariations)
+    {
+        return quizVariations.QuizzVariations[Random.Range(0, quizVariations.QuizzVariations.Count)];
     }
 }

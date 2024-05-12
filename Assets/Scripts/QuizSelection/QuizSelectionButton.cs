@@ -14,9 +14,9 @@ namespace QuizSelection
         
         private int _quizIndex;
 
-        public void Initialize(QuizScriptableObject quiz, int index)
+        public void Initialize(QuizVariationsScriptableObject quizData, int index)
         {
-            quizNameText.text = quiz.name;
+            quizNameText.text = quizData.name;
             _quizIndex = index;
             button.onClick.AddListener(_OnButtonClicked);
         }
