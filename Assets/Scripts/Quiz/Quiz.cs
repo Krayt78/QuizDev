@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,28 +13,34 @@ namespace Quiz
         }
         private difficultySetting difficulty;
         public delegate void CorrectAnswerClicked();
+        public delegate void WrongAnswerClicked();
         public event CorrectAnswerClicked OnCorrectAnswerClicked;
+        public event WrongAnswerClicked OnWrongAnswerClicked;
         
         [FormerlySerializedAs("QuizScriptableObject")] public QuizDataScriptableObject quizDataScriptableObject;
         public QuizCanvasManager QuizCanvasManager;
         
         private int _correctAnswerIndex;
         private QuizDataScriptableObject _currentQuizDataData;
+        private int currentQuizDataIndex = -1;
+        private QuizVariationsScriptableObject _quizVariations;
 
-        public void Initialize(QuizDataScriptableObject quizData)
+        public void Initialize(QuizVariationsScriptableObject quizVariations)
         {
+            _quizVariations = quizVariations;
+            var quizData = Utils.SelectRandomQuizVariation(quizVariations);
+            
             CleanupSubscriptions();
             
             Debug.Log($"Quiz initialized with question: {quizData.Question}");
             QuizCanvasManager.Initialize(quizData);
+            _correctAnswerIndex = quizData.CorrectAnswerIndex;
+            _currentQuizDataData = quizData;
             
             QuizCanvasManager.OnAnswerButtonClicked += OnAnswerButtonClicked;
             QuizCanvasManager.OnHintButtonClicked += OnHintButtonClicked;
             QuizCanvasManager.OnBackButtonClicked += OnBackButtonClicked;
             QuizCanvasManager.OnTimerRanOut += OnTimerRanOut;
-            
-            _correctAnswerIndex = quizData.CorrectAnswerIndex;
-            _currentQuizDataData = quizData;
             
             QuizCanvasManager.HintPopup.HideHint();
             DetermineDifficulty();
@@ -58,6 +63,12 @@ namespace Quiz
         private void LoseGame()
         {
             QuizCanvasManager.StopAllCoroutines();
+            var quizData = Utils.SelectRandomQuizVariation(_quizVariations, currentQuizDataIndex);
+            
+            QuizCanvasManager.Initialize(quizData);
+            _correctAnswerIndex = quizData.CorrectAnswerIndex;
+            _currentQuizDataData = quizData;
+            
             //QuizCanvasManager.ShowLosePopup();
         }
 
