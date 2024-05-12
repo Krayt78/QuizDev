@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Bonus
   m_EditorClassIdentifier: 
   QuizzVariations:
-  - {fileID: 11400000, guid: e2168d8c9f1df4a9ea21f2a9b255165a, type: 2}
-  - {fileID: 11400000, guid: 68c0823a9ca084e3189977f654a7f321, type: 2}
-  - {fileID: 11400000, guid: cc639197bf6ca4a3c89c8017990944ce, type: 2}
+  - {fileID: 11400000, guid: 6940ea3612028476895b25d3d1b4c7ab, type: 2}

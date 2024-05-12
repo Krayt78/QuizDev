@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 1.1-E
   m_EditorClassIdentifier: 
   Question: //Which Case Does This Code Choose?
-  Code: If ((9*2) > (6*4)){<br> Case = A}<br> else {<br> Case = B}<br
+  Code: If ((9*2) > (6*4)){<br> Case = A}<br> else {<br> Case = B}<br>
   Answers:
   - Solution A
   - Solution B
+  timeToAppear: 2
   CorrectAnswerIndex: 1
   Hint: if (18>(6*4))

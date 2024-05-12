@@ -17,5 +17,6 @@ MonoBehaviour:
   Answers:
   - Solution A
   - Solution B
+  timeToAppear: 2
   CorrectAnswerIndex: 0
   Hint: if (24>(7*3))
