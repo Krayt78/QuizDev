@@ -29,8 +29,8 @@ public class CanvasManager : MonoBehaviour
     private QuizCanvasManager _quizCanvasManager;
     private QuizSelectionCanvasManager _quizSelectionCanvasManager;
 
-    public void Initialize(List<QuizScriptableObject> firstLevelQuizes, List<QuizScriptableObject> secondLevelQuizes,
-        List<QuizScriptableObject> thirdLevelQuizes)
+    public void Initialize(List<QuizVariationsScriptableObject> firstLevelQuizes, List<QuizVariationsScriptableObject> secondLevelQuizes,
+        List<QuizVariationsScriptableObject> thirdLevelQuizes)
     {
         _splashScreenCanvasManager = FindObjectOfType<SplashScreenCanvasManager>();
         _splashScreenCanvasManager.OnSplashScreenButtonClicked += () => OnSplashScreenButtonClicked?.Invoke();
@@ -44,7 +44,6 @@ public class CanvasManager : MonoBehaviour
         _quizCanvasManager.OnAnswerButtonClicked += _OnAnswerButtonClicked;
         _quizCanvasManager.OnHintButtonClicked += _OnHintButtonClicked;
         _quizCanvasManager.OnBackButtonClicked += _OnBackButtonClicked;
-        _quizCanvasManager.Initialize(firstLevelQuizes[0], true);
     }
     
     private void _OnBackButtonClicked()

@@ -26,8 +26,8 @@ public class QuizSelectionCanvasManager: MonoBehaviour
     public GameObject quizSelectionButtonPrefab;
     public Transform quizSelectionButtonContainer;
     
-    public void Initialize(List<QuizScriptableObject> firstLevelQuizes, List<QuizScriptableObject> secondLevelQuizes,
-        List<QuizScriptableObject> thirdLevelQuizes)
+    public void Initialize(List<QuizVariationsScriptableObject> firstLevelQuizes, List<QuizVariationsScriptableObject> secondLevelQuizes,
+        List<QuizVariationsScriptableObject> thirdLevelQuizes)
     {
         for (var i = 0; i < firstLevelQuizes.Count; i++)
         {

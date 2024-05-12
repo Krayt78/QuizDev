@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Quiz
 {
@@ -15,28 +16,38 @@ namespace Quiz
         public delegate void CorrectAnswerClicked();
         public event CorrectAnswerClicked OnCorrectAnswerClicked;
         
-        public QuizScriptableObject QuizScriptableObject;
+        [FormerlySerializedAs("QuizScriptableObject")] public QuizDataScriptableObject quizDataScriptableObject;
         public QuizCanvasManager QuizCanvasManager;
         
         private int _correctAnswerIndex;
-        private QuizScriptableObject _currentQuizData;
+        private QuizDataScriptableObject _currentQuizDataData;
 
-        public void Initialize(QuizScriptableObject quiz)
+        public void Initialize(QuizDataScriptableObject quizData)
         {
-            Debug.Log($"Quiz initialized with question: {quiz.Question}");
-            QuizCanvasManager.Initialize(quiz);
+            CleanupSubscriptions();
+            
+            Debug.Log($"Quiz initialized with question: {quizData.Question}");
+            QuizCanvasManager.Initialize(quizData);
             
             QuizCanvasManager.OnAnswerButtonClicked += OnAnswerButtonClicked;
             QuizCanvasManager.OnHintButtonClicked += OnHintButtonClicked;
             QuizCanvasManager.OnBackButtonClicked += OnBackButtonClicked;
             QuizCanvasManager.OnTimerRanOut += OnTimerRanOut;
             
-            _correctAnswerIndex = quiz.CorrectAnswerIndex;
-            _currentQuizData = quiz;
+            _correctAnswerIndex = quizData.CorrectAnswerIndex;
+            _currentQuizDataData = quizData;
             
             QuizCanvasManager.HintPopup.HideHint();
             DetermineDifficulty();
             SetTimer();
+        }
+
+        private void CleanupSubscriptions()
+        {
+            QuizCanvasManager.OnAnswerButtonClicked -= OnAnswerButtonClicked;
+            QuizCanvasManager.OnHintButtonClicked -= OnHintButtonClicked;
+            QuizCanvasManager.OnBackButtonClicked -= OnBackButtonClicked;
+            QuizCanvasManager.OnTimerRanOut -= OnTimerRanOut;
         }
 
         private void OnTimerRanOut()
@@ -57,12 +68,12 @@ namespace Quiz
 
         void DetermineDifficulty()
         {
-            if (_currentQuizData.name.Contains("E"))
+            if (_currentQuizDataData.name.Contains("E"))
                 difficulty = difficultySetting.Easy;
-            else if (_currentQuizData.name.Contains("M"))
+            else if (_currentQuizDataData.name.Contains("M"))
             {
                 difficulty = difficultySetting.Medium;
-            } else if (_currentQuizData.name.Contains("H"))
+            } else if (_currentQuizDataData.name.Contains("H"))
             {
                 difficulty = difficultySetting.Hard;
             } else 
@@ -88,13 +99,15 @@ namespace Quiz
         private void OnHintButtonClicked()
         {
             Debug.Log("Hint button clicked");
-            QuizCanvasManager.HintPopup.ShowHint(_currentQuizData.Hint);
+            QuizCanvasManager.HintPopup.ShowHint(_currentQuizDataData.Hint);
         }
 
-        private void OnAnswerButtonClicked(int answerindex)
+        private void OnAnswerButtonClicked(int answerIndex)
         {
-            Debug.Log($"Answer button clicked with index: {answerindex}");
-            if(answerindex == _correctAnswerIndex)
+            QuizCanvasManager.StopAllCoroutines();
+            
+            Debug.Log($"Answer button clicked with index: {answerIndex}");
+            if(answerIndex == _correctAnswerIndex)
             {
                 Debug.Log("Correct answer!");
                 //do somethimg here
@@ -106,7 +119,7 @@ namespace Quiz
                 Debug.Log("Wrong answer!");
                 LoseGame();
             }
-            QuizCanvasManager.StopAllCoroutines();
+            
         }
     }
 }

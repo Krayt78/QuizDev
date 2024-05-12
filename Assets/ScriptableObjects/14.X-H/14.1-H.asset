@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
+  m_Name: 14.1-H
+  m_EditorClassIdentifier: 
+  Question: "//What's the Value of \u2018y\u2019 After This?"
+  Code: "x= 7/2;\Ly=0<br> For (i=0; i<x;i++)\L{<br> y++;\L}<br>"
+  Answers:
+  - 3.5
+  - 4
+  - 3
+  CorrectAnswerIndex: 1
+  Hint: "The \u201Cfor\u201D loop is similar to the \u201Cwhile\u201D loop, it will
+    loop as many times until I is grater than x, while increasing by one after each
+    loop"

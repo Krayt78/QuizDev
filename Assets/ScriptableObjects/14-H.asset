@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 14-H
   m_EditorClassIdentifier: 
   Question: "//What's the Value of \u2018y\u2019 After This?"
-  Code: "x= 5/2;\Ly=0<br> For (i=0; i>x;i++)\L{<br> y++;\L}<br>"
+  Code: "x= 5/2;\Ly=0<br> For (i=0; i<x;i++)\L{<br> y++;\L}<br>"
   Answers:
   - 2.5
   - 2

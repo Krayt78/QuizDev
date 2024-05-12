@@ -42,18 +42,18 @@ namespace Quiz
 
         private float remainingTimerTime;
 
-        public void Initialize(QuizScriptableObject quiz, bool isFirstInitialization = false)
+        public void Initialize(QuizDataScriptableObject quizData, bool isFirstInitialization = false)
         {
             ClearPreviousAnswers();
             
-            for (var i = 0; i < quiz.Answers.Length; i++)
+            for (var i = 0; i < quizData.Answers.Length; i++)
             {
                 var answerIndex = i;
                 var button = Instantiate(AnswerButtonPrefab, AnswerButtonContainer);
                 _answerButtons.Add(button);
                 var answerButton = button.GetComponent<AnswerButton>();
                 answerButton.AnswerButtonComponent.onClick.AddListener(() => _OnAnswerButtonClicked(answerIndex));
-                answerButton.SetText(quiz.Answers[i]);
+                answerButton.SetText(quizData.Answers[i]);
 
                 switch (i)
                 {
@@ -75,24 +75,30 @@ namespace Quiz
             }
             
             CodeText.text = "";
+            
+            Debug.Log("QuizCanvasManager: "+ isFirstInitialization);
             if (!isFirstInitialization)
             {
-                StartCoroutine(ComputerTypeEffect(quiz));
+                StartCoroutine(ComputerTypeEffect(quizData));
             }
             
-            QuestionText.text = quiz.Question;
+            QuestionText.text = quizData.Question;
 
             HintButton.onClick.AddListener(_OnHintButtonClicked);
             BackButton.onClick.AddListener(_OnBackButtonClicked);
         }
         
-        public IEnumerator ComputerTypeEffect(QuizScriptableObject quizScriptableObject)
+        public IEnumerator ComputerTypeEffect(QuizDataScriptableObject quizDataScriptableObject)
         {
-            var amountOfCharacters = quizScriptableObject.Code.Length;
-            var timeBetweenLetters = quizScriptableObject.timeToAppear / amountOfCharacters;
-            foreach (var codeCharacter in quizScriptableObject.Code)
+            var amountOfCharacters = quizDataScriptableObject.Code.Length;
+            var timeBetweenLetters = quizDataScriptableObject.timeToAppear / amountOfCharacters;
+            
+            if (timeBetweenLetters > Constants.MINIMUM_TIME_BETWEEN_LETTERS)
+                timeBetweenLetters = Constants.MINIMUM_TIME_BETWEEN_LETTERS;
+
+            for (var i = 0; i < quizDataScriptableObject.Code.Length; i++)
             {
-                CodeText.text += codeCharacter;
+                CodeText.text += quizDataScriptableObject.Code[i];
                 yield return new WaitForSeconds(timeBetweenLetters);
             }
         }
@@ -107,7 +113,10 @@ namespace Quiz
         bool TimerIsDone()
         {
             remainingTimerTime -= Time.deltaTime;
-            TimerText.text = remainingTimerTime.ToString();
+            var remainingTimerTimeInt = (int) remainingTimerTime;
+            Mathf.Clamp(remainingTimerTimeInt, 0, remainingTimerTimeInt);
+            
+            TimerText.text = remainingTimerTimeInt.ToString();
             return remainingTimerTime <= 0;
         }
         

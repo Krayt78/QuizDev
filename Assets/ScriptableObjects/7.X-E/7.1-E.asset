@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
+  m_Name: 7.1-E
+  m_EditorClassIdentifier: 
+  Question: //Which Case Does This Code Choose?
+  Code: a=4<br>b=2<br> if (a / 2 > b) {<br>     case = A;<br> } else {<br>     case
+    = B; }
+  Answers:
+  - Solution A
+  - Solution B
+  CorrectAnswerIndex: 1
+  Hint: if (4/2 >2)

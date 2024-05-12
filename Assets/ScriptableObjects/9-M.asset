@@ -18,5 +18,5 @@ MonoBehaviour:
   Answers:
   - Solution A
   - Solution B
-  CorrectAnswerIndex: 1
+  CorrectAnswerIndex: 0
   Hint: The method is a (equal to & lover than) check

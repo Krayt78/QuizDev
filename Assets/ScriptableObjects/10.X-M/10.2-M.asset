@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
-  m_Name: Draft
+  m_Name: 10.2-M
   m_EditorClassIdentifier: 
-  Question: 
-  Answers: []
-  CorrectAnswerIndex: 0
-  Hint: 
+  Question: //Which Case Does This Code Choose?
+  Code: a = 18;<br> if (a / 3 <= 4) {<br>     case = 'A';<br> } else {<br>     case
+    = 'B';<br> }<br>
+  Answers:
+  - Solution A
+  - Solution B
+  CorrectAnswerIndex: 1
+  Hint: The method is a (equal to & higher than) check
