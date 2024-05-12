@@ -27,21 +27,23 @@ public class CanvasManager : MonoBehaviour
     
     private SplashScreenCanvasManager _splashScreenCanvasManager;
     private QuizCanvasManager _quizCanvasManager;
+    private QuizSelectionCanvasManager _quizSelectionCanvasManager;
 
-    public void Initialize(List<QuizScriptableObject> quizes)
+    public void Initialize(List<QuizScriptableObject> firstLevelQuizes, List<QuizScriptableObject> secondLevelQuizes,
+        List<QuizScriptableObject> thirdLevelQuizes)
     {
         _splashScreenCanvasManager = FindObjectOfType<SplashScreenCanvasManager>();
         _splashScreenCanvasManager.OnSplashScreenButtonClicked += () => OnSplashScreenButtonClicked?.Invoke();
         
-        var selectQuizManager = FindObjectOfType<QuizSelectionCanvasManager>();
-        selectQuizManager.Initialize(quizes);
-        selectQuizManager.OnQuizSelected += _OnQuizSelected;
+        _quizSelectionCanvasManager = FindObjectOfType<QuizSelectionCanvasManager>();
+        _quizSelectionCanvasManager.Initialize(firstLevelQuizes,secondLevelQuizes, thirdLevelQuizes);
+        _quizSelectionCanvasManager.OnQuizSelected += _OnQuizSelected;
         
-        var quizCanvasManager = FindObjectOfType<QuizCanvasManager>();
-        quizCanvasManager.OnAnswerButtonClicked += _OnAnswerButtonClicked;
-        quizCanvasManager.OnHintButtonClicked += _OnHintButtonClicked;
-        quizCanvasManager.OnBackButtonClicked += _OnBackButtonClicked;
-        quizCanvasManager.Initialize(quizes[0]);
+        _quizCanvasManager = FindObjectOfType<QuizCanvasManager>();
+        _quizCanvasManager.OnAnswerButtonClicked += _OnAnswerButtonClicked;
+        _quizCanvasManager.OnHintButtonClicked += _OnHintButtonClicked;
+        _quizCanvasManager.OnBackButtonClicked += _OnBackButtonClicked;
+        _quizCanvasManager.Initialize(firstLevelQuizes[0], true);
     }
     
     private void _OnBackButtonClicked()
@@ -62,5 +64,10 @@ public class CanvasManager : MonoBehaviour
     private void _OnHintButtonClicked()
     {
         OnHintButtonClicked?.Invoke();
+    }
+
+    public void HandleBackgrounds(int backgroundIndex)
+    {
+        _quizCanvasManager.HandleBackgrounds(backgroundIndex);
     }
 }

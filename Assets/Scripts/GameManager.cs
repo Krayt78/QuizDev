@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
-using Unity.Properties;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public List<QuizScriptableObject> Quizzes;
+    
+    private List<QuizScriptableObject> FirstLevelQuizzes;
+    private List<QuizScriptableObject> SecondLevelQuizzes;
+    private List<QuizScriptableObject> ThirdLevelQuizzes;
+    
     public int CurrentQuizIndex;
     
     private CanvasManager _canvasManager;
     private Quiz.Quiz _quiz;
+    private int _quizzesCount;
 
     enum GameState
     {
@@ -23,11 +28,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _quizzesCount = Quizzes.Count;
+        FirstLevelQuizzes = Quizzes.GetRange(0, _quizzesCount / 3);
+        SecondLevelQuizzes = Quizzes.GetRange(_quizzesCount / 3, _quizzesCount / 3);
+        ThirdLevelQuizzes = Quizzes.GetRange(_quizzesCount / 3 * 2,
+            _quizzesCount - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count);
+        
         _quiz = FindObjectOfType<Quiz.Quiz>();
         _quiz.OnCorrectAnswerClicked += OnCorrectAnswerClicked;
         
         _canvasManager = FindObjectOfType<CanvasManager>();
-        _canvasManager.Initialize(Quizzes);
+        _canvasManager.Initialize(FirstLevelQuizzes, SecondLevelQuizzes, ThirdLevelQuizzes);
         
         _canvasManager.OnSplashScreenButtonClicked += () => UpdateGameState(GameState.QuizSelection);
         _canvasManager.OnHintButtonClicked += OnHintButtonClicked;
@@ -39,19 +50,94 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.SplashScreen);
     }
 
-    private void OnCorrectAnswerClicked()
+    private void HandleBackgrounds(int backgroundIndex = 0)
     {
+        Debug.Log("GameManager: Background Index: " + backgroundIndex);
+        _canvasManager.HandleBackgrounds(backgroundIndex);
+    }
+    
+    private int GetLevelCategory(int quizIndex)
+    {
+        Debug.Log("GameManager: Quiz Index: " + quizIndex);
+        if (quizIndex < FirstLevelQuizzes.Count)
+        {
+            Debug.Log("GameManager: Level Category: 0");
+            return 0;
+        }
+        if (quizIndex < FirstLevelQuizzes.Count + SecondLevelQuizzes.Count)
+        {
+            Debug.Log("GameManager: Level Category: 1");
+            return 1;
+        }
+        
+        Debug.Log("GameManager: Level Category: 2");
+        return 2;
+    }
+    
+    private void HandleLevelSelection(int levelIndex, bool isSelectedManually = false)
+    {
+        if (isSelectedManually)
+        {
+            if(_gameState != GameState.Quiz)
+                UpdateGameState(GameState.Quiz);
+            
+            CurrentQuizIndex = levelIndex;
+            var levelCategory = GetLevelCategory(CurrentQuizIndex);
+            Debug.Log("GameManager: Level Category: " + levelCategory);
+            switch (levelCategory)
+            {
+                case 0:
+                    HandleBackgrounds();
+                    _quiz.Initialize(FirstLevelQuizzes[CurrentQuizIndex]);
+                    break;
+                case 1:
+                    HandleBackgrounds(1);
+                    _quiz.Initialize(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]);
+                    break;
+                case 2:
+                    HandleBackgrounds(2);
+                    _quiz.Initialize(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]);
+                    break;
+                default:
+                    throw new Exception("Invalid level category");
+            }
+            return;
+        }
+        
         if (_gameState != GameState.Quiz) return;
         
-        if(CurrentQuizIndex < Quizzes.Count - 1)
+        if(CurrentQuizIndex < _quizzesCount - 1)
         {
             CurrentQuizIndex++;
-            _quiz.Initialize(Quizzes[CurrentQuizIndex]);
+            var levelCategory = GetLevelCategory(CurrentQuizIndex);
+            switch (levelCategory)
+            {
+                case 0:
+                    HandleBackgrounds();
+                    _quiz.Initialize(FirstLevelQuizzes[CurrentQuizIndex]);
+                    break;
+                case 1:
+                    HandleBackgrounds(1);
+                    _quiz.Initialize(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]);
+                    break;
+                case 2:
+                    HandleBackgrounds(2);
+                    _quiz.Initialize(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]);
+                    break;
+                default:
+                    throw new Exception("Invalid level category");
+            }
         }
         else
         {
             UpdateGameState(GameState.QuizSelection);
         }
+    }
+
+    private void OnCorrectAnswerClicked()
+    {
+        CurrentQuizIndex++;
+        HandleLevelSelection(CurrentQuizIndex);
     }
 
     private void OnBackButtonClicked()
@@ -63,9 +149,7 @@ public class GameManager : MonoBehaviour
     private void OnQuizSelected(int quizIndex)
     {
         Debug.Log("GameManager: Quiz Selected: " + quizIndex);
-        _quiz.Initialize(Quizzes[quizIndex]);
-        CurrentQuizIndex = quizIndex;
-        UpdateGameState(GameState.Quiz);
+        HandleLevelSelection(quizIndex, true);
     }
 
     private void UpdateGameState(GameState gameState)

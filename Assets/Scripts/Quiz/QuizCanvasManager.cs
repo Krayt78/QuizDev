@@ -1,8 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Quiz
@@ -24,6 +24,10 @@ namespace Quiz
         public TMP_Text CodeText;
         public TMP_Text QuestionText;
         public HintPopup HintPopup;
+        
+        public GameObject Background1;
+        public GameObject Background2;
+        public GameObject Background3;
 
         public event HintButtonClicked OnHintButtonClicked;
         public event AnswerButtonClicked OnAnswerButtonClicked;
@@ -31,7 +35,7 @@ namespace Quiz
         
         private List<GameObject> _answerButtons = new List<GameObject>();
 
-        public void Initialize(QuizScriptableObject quiz)
+        public void Initialize(QuizScriptableObject quiz, bool isFirstInitialization = false)
         {
             ClearPreviousAnswers();
             
@@ -60,15 +64,30 @@ namespace Quiz
                         break;
                     default:
                         throw new Exception("Invalid answer button index");
-                    
                 }
             }
-
-            CodeText.text = quiz.Code;
+            
+            CodeText.text = "";
+            if (!isFirstInitialization)
+            {
+                StartCoroutine(ComputerTypeEffect(quiz));
+            }
+            
             QuestionText.text = quiz.Question;
 
             HintButton.onClick.AddListener(_OnHintButtonClicked);
             BackButton.onClick.AddListener(_OnBackButtonClicked);
+        }
+        
+        public IEnumerator ComputerTypeEffect(QuizScriptableObject quizScriptableObject)
+        {
+            var amountOfCharacters = quizScriptableObject.Code.Length;
+            var timeBetweenLetters = quizScriptableObject.timeToAppear / amountOfCharacters;
+            foreach (var codeCharacter in quizScriptableObject.Code)
+            {
+                CodeText.text += codeCharacter;
+                yield return new WaitForSeconds(timeBetweenLetters);
+            }
         }
         
         private void ClearPreviousAnswers()
@@ -94,6 +113,30 @@ namespace Quiz
         private void _OnAnswerButtonClicked(int answerIndex)
         {
             OnAnswerButtonClicked?.Invoke(answerIndex);
+        }
+
+        public void HandleBackgrounds(int backgroundIndex)
+        {
+            switch (backgroundIndex)
+            {
+                case 0:
+                    Background1.SetActive(true);
+                    Background2.SetActive(false);
+                    Background3.SetActive(false);
+                    break;
+                case 1:
+                    Background1.SetActive(false);
+                    Background2.SetActive(true);
+                    Background3.SetActive(false);
+                    break;
+                case 2:
+                    Background1.SetActive(false);
+                    Background2.SetActive(false);
+                    Background3.SetActive(true);
+                    break;
+                default:
+                    throw new Exception("Invalid background index");
+            }
         }
     }
 }
