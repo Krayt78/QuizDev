@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
+  m_Name: 3.1-E
+  m_EditorClassIdentifier: 
+  Question: //What's the Value of 'a' After This?
+  Code: a=4;<br> a+=2;<br>
+  Answers:
+  - a = 4
+  - a = 7
+  - a = 6
+  CorrectAnswerIndex: 2
+  Hint: Add 2 to a!
