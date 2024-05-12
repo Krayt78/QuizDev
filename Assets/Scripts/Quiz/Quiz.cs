@@ -23,6 +23,8 @@ namespace Quiz
 
         public void Initialize(QuizScriptableObject quiz)
         {
+            CleanupSubscriptions();
+            
             Debug.Log($"Quiz initialized with question: {quiz.Question}");
             QuizCanvasManager.Initialize(quiz);
             
@@ -37,6 +39,14 @@ namespace Quiz
             QuizCanvasManager.HintPopup.HideHint();
             DetermineDifficulty();
             SetTimer();
+        }
+
+        private void CleanupSubscriptions()
+        {
+            QuizCanvasManager.OnAnswerButtonClicked -= OnAnswerButtonClicked;
+            QuizCanvasManager.OnHintButtonClicked -= OnHintButtonClicked;
+            QuizCanvasManager.OnBackButtonClicked -= OnBackButtonClicked;
+            QuizCanvasManager.OnTimerRanOut -= OnTimerRanOut;
         }
 
         private void OnTimerRanOut()
@@ -91,10 +101,12 @@ namespace Quiz
             QuizCanvasManager.HintPopup.ShowHint(_currentQuizData.Hint);
         }
 
-        private void OnAnswerButtonClicked(int answerindex)
+        private void OnAnswerButtonClicked(int answerIndex)
         {
-            Debug.Log($"Answer button clicked with index: {answerindex}");
-            if(answerindex == _correctAnswerIndex)
+            QuizCanvasManager.StopAllCoroutines();
+            
+            Debug.Log($"Answer button clicked with index: {answerIndex}");
+            if(answerIndex == _correctAnswerIndex)
             {
                 Debug.Log("Correct answer!");
                 //do somethimg here
@@ -106,7 +118,7 @@ namespace Quiz
                 Debug.Log("Wrong answer!");
                 LoseGame();
             }
-            QuizCanvasManager.StopAllCoroutines();
+            
         }
     }
 }

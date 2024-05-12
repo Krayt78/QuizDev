@@ -75,6 +75,8 @@ namespace Quiz
             }
             
             CodeText.text = "";
+            
+            Debug.Log("QuizCanvasManager: "+ isFirstInitialization);
             if (!isFirstInitialization)
             {
                 StartCoroutine(ComputerTypeEffect(quiz));
@@ -90,9 +92,13 @@ namespace Quiz
         {
             var amountOfCharacters = quizScriptableObject.Code.Length;
             var timeBetweenLetters = quizScriptableObject.timeToAppear / amountOfCharacters;
-            foreach (var codeCharacter in quizScriptableObject.Code)
+            
+            if (timeBetweenLetters > Constants.MINIMUM_TIME_BETWEEN_LETTERS)
+                timeBetweenLetters = Constants.MINIMUM_TIME_BETWEEN_LETTERS;
+
+            for (var i = 0; i < quizScriptableObject.Code.Length; i++)
             {
-                CodeText.text += codeCharacter;
+                CodeText.text += quizScriptableObject.Code[i];
                 yield return new WaitForSeconds(timeBetweenLetters);
             }
         }
@@ -107,7 +113,10 @@ namespace Quiz
         bool TimerIsDone()
         {
             remainingTimerTime -= Time.deltaTime;
-            TimerText.text = remainingTimerTime.ToString();
+            var remainingTimerTimeInt = (int) remainingTimerTime;
+            Mathf.Clamp(remainingTimerTimeInt, 0, remainingTimerTimeInt);
+            
+            TimerText.text = remainingTimerTimeInt.ToString();
             return remainingTimerTime <= 0;
         }
         

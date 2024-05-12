@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour
 
     private void OnCorrectAnswerClicked()
     {
-        CurrentQuizIndex++;
         HandleLevelSelection(CurrentQuizIndex);
     }
 
