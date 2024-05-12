@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Purple
+  m_Name: Cop
   m_Shader: {fileID: -6465566751694194690, guid: 941cd9bc129b74e12a0ba397b4189e9e,
     type: 3}
   m_Parent: {fileID: 0}
@@ -28,11 +28,11 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Power: 2.56
-    - _Shine: 0.2
+    - _Power: 3
+    - _Shine: 0.5
     m_Colors:
-    - _Color: {r: 0.556433, g: 0.26406196, b: 0.8113208, a: 0}
-    - _FresnalColor: {r: 0.86992526, g: 0.7775454, b: 0.9528302, a: 0}
+    - _Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _FresnalColor: {r: 0.9789724, g: 0.9765041, b: 0.9811321, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5610448374785100000
 MonoBehaviour:
