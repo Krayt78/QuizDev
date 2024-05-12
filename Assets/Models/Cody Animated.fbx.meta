@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|Run
-      takeName: root|Run
-      internalID: 5420418217189406925
+      name: 'root|Run '
+      takeName: 'root|Run '
+      internalID: 2338347542087656411
       firstFrame: 16
       lastFrame: 48
       wrapMode: 0
@@ -73,7 +73,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
