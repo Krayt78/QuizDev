@@ -527,7 +527,12 @@ PrefabInstance:
     - target: {fileID: 8813507739475366846, guid: 9304b281b91e141b5ab686519b7d303f,
         type: 3}
       propertyPath: m_Name
-      value: Level7-12
+      value: Level1-6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813507739475366846, guid: 9304b281b91e141b5ab686519b7d303f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -552,12 +557,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Background1
       value: 
-      objectReference: {fileID: 170355331}
+      objectReference: {fileID: 1644425123}
     - target: {fileID: 3687071507645390560, guid: 9e8da25e3fca34b938973020026fd3ac,
         type: 3}
       propertyPath: Background2
       value: 
-      objectReference: {fileID: 1644425123}
+      objectReference: {fileID: 170355331}
     - target: {fileID: 3687071507645390560, guid: 9e8da25e3fca34b938973020026fd3ac,
         type: 3}
       propertyPath: Background3
@@ -800,12 +805,12 @@ PrefabInstance:
     - target: {fileID: 2349290836892342045, guid: 32c5b503c5103411283238fc460b9727,
         type: 3}
       propertyPath: m_Name
-      value: Level1-6
+      value: Level7-12
       objectReference: {fileID: 0}
     - target: {fileID: 2349290836892342045, guid: 32c5b503c5103411283238fc460b9727,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5160623629397809522, guid: 32c5b503c5103411283238fc460b9727,
         type: 3}
@@ -936,6 +941,6 @@ SceneRoots:
   - {fileID: 308913266}
   - {fileID: 1664356423}
   - {fileID: 576151546}
-  - {fileID: 1967050925927611576}
   - {fileID: 1547827457}
+  - {fileID: 1967050925927611576}
   - {fileID: 1538402311604911131}
