@@ -18,8 +18,15 @@ public static class Utils
         return new Color32(r,g,b,a);
     }
     
-    public static QuizDataScriptableObject SelectRandomQuizVariation(QuizVariationsScriptableObject quizVariations)
+    public static QuizDataScriptableObject SelectRandomQuizVariation(QuizVariationsScriptableObject quizVariations, int excludeIndex = -1)
     {
-        return quizVariations.QuizzVariations[Random.Range(0, quizVariations.QuizzVariations.Count)];
+        List<QuizDataScriptableObject> tempList = new List<QuizDataScriptableObject>();
+        for (int i = 0; i < quizVariations.QuizzVariations.Count; i++)
+        {
+            if (i != excludeIndex)
+                tempList.Add(quizVariations.QuizzVariations[i]);
+        }
+        
+        return tempList[Random.Range(0, tempList.Count)];
     }
 }

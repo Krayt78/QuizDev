@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         
         _quiz = FindObjectOfType<Quiz.Quiz>();
         _quiz.OnCorrectAnswerClicked += OnCorrectAnswerClicked;
+        _quiz.OnWrongAnswerClicked += OnWrongAnswerClicked;
         
         _canvasManager = FindObjectOfType<CanvasManager>();
         
@@ -49,6 +50,11 @@ public class GameManager : MonoBehaviour
         
         _gameState = GameState.SplashScreen;
         UpdateGameState(GameState.SplashScreen);
+    }
+
+    private void OnWrongAnswerClicked()
+    {
+        Debug.Log("GameManager: Wrong Answer Clicked");
     }
 
     private void HandleBackgrounds(int backgroundIndex = 0)
@@ -89,16 +95,15 @@ public class GameManager : MonoBehaviour
             {
                 case 0:
                     HandleBackgrounds();
-                    var quizVariation = Utils.SelectRandomQuizVariation(FirstLevelQuizzes[CurrentQuizIndex]);
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(FirstLevelQuizzes[CurrentQuizIndex]));
+                    _quiz.Initialize(FirstLevelQuizzes[CurrentQuizIndex]);
                     break;
                 case 1:
                     HandleBackgrounds(1);
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]));
+                    _quiz.Initialize(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]);
                     break;
                 case 2:
                     HandleBackgrounds(2);
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]));
+                    _quiz.Initialize(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]);
                     break;
                 default:
                     throw new Exception("Invalid level category");
@@ -116,15 +121,15 @@ public class GameManager : MonoBehaviour
             {
                 case 0:
                     HandleBackgrounds();
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(FirstLevelQuizzes[CurrentQuizIndex]));
+                    _quiz.Initialize(FirstLevelQuizzes[CurrentQuizIndex]);
                     break;
                 case 1:
                     HandleBackgrounds(1);
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]));
+                    _quiz.Initialize(SecondLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count]);
                     break;
                 case 2:
                     HandleBackgrounds(2);
-                    _quiz.Initialize(Utils.SelectRandomQuizVariation(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]));
+                    _quiz.Initialize(ThirdLevelQuizzes[CurrentQuizIndex - FirstLevelQuizzes.Count - SecondLevelQuizzes.Count]);
                     break;
                 default:
                     throw new Exception("Invalid level category");
