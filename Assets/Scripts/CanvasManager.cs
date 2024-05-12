@@ -38,6 +38,7 @@ public class CanvasManager : MonoBehaviour
         _quizSelectionCanvasManager = FindObjectOfType<QuizSelectionCanvasManager>();
         _quizSelectionCanvasManager.Initialize(firstLevelQuizes,secondLevelQuizes, thirdLevelQuizes);
         _quizSelectionCanvasManager.OnQuizSelected += _OnQuizSelected;
+        _quizSelectionCanvasManager.OnLevelCategorySelected += HandleBackgrounds;
         
         _quizCanvasManager = FindObjectOfType<QuizCanvasManager>();
         _quizCanvasManager.OnAnswerButtonClicked += _OnAnswerButtonClicked;
