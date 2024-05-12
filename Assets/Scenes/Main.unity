@@ -601,11 +601,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1-6
       objectReference: {fileID: 0}
-    - target: {fileID: 2349290836892342045, guid: 32c5b503c5103411283238fc460b9727,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6253964894863953138, guid: 32c5b503c5103411283238fc460b9727,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -656,11 +651,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8321907996589689484, guid: 32c5b503c5103411283238fc460b9727,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4eb343d45df0e496f8cdf39eaf93e5d3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
