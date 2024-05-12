@@ -18,5 +18,5 @@ MonoBehaviour:
   Answers:
   - Solution A
   - Solution B
-  CorrectAnswerIndex: 0
-  Hint: if (4*2>7))
+  CorrectAnswerIndex: 1
+  Hint: if (5*2>10))

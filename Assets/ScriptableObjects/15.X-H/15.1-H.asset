@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
-  m_Name: 7-E
+  m_Name: 15.1-H
   m_EditorClassIdentifier: 
   Question: //Which Case Does This Code Choose?
-  Code: a= 8<br>b=7<br> if (a / 2 > b) {<br>     case = A;<br> } else {<br>     case
-    = B; }
+  Code: int a = 9/5, <br> float b = 14/3;<br> if (a > 2 && b > 4) {<br>     case
+    = 'A';<br> } else {<br>     case = 'B';<br> }<br>
   Answers:
   - Solution A
-  - Solution B
-  CorrectAnswerIndex: 0
-  Hint: if (8/2 >7)
+  - SolutionB
+  CorrectAnswerIndex: 1
+  Hint: "The sign \u201C&&\u201D means that both statements have to be true for the
+    if statement to be true, but careful! A is an integer and can only be a whole
+    number without decimals!"

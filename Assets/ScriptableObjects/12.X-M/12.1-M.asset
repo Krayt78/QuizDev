@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
-  m_Name: 13-M
+  m_Name: 12.1-M
   m_EditorClassIdentifier: 
-  Question: "//What's the Value of \u2018y\u2019 After This?"
-  Code: y = 0;<br>int x = 11 / 4;<br> while (y < x) {<br>     y++;<br> }<br>
+  Question: Which Case Does This Code Choose?
+  Code: a=7, b=3;<br> if (a < 8 || b > 2) {<br>     solution = 'A';<br> } else {<br>    
+    solution = 'B';<br> }<br>
   Answers:
-  - 3
-  - 2
-  - 4
-  CorrectAnswerIndex: 1
-  Hint: The while loop keeps looping while y is less than x, but careful! X is an
-    integer and can only be a whole number without decimals!
+  - Solution A
+  - Solution B
+  CorrectAnswerIndex: 0
+  Hint: "The sign \u201C||\u201D means that only one of the statements have to be
+    true for the if statement to be true"
