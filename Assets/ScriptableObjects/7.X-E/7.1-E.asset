@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6776430b8c42dd8c65e343f6241c1e, type: 3}
-  m_Name: 13-M
+  m_Name: 7.1-E
   m_EditorClassIdentifier: 
-  Question: "//What's the Value of \u2018y\u2019 After This?"
-  Code: y = 0;<br>int x = 11 / 4;<br> while (y < x) {<br>     y++;<br> }<br>
+  Question: //Which Case Does This Code Choose?
+  Code: a=4<br>b=2<br> if (a / 2 > b) {<br>     case = A;<br> } else {<br>     case
+    = B; }
   Answers:
-  - 3
-  - 2
-  - 4
+  - Solution A
+  - Solution B
   CorrectAnswerIndex: 1
-  Hint: The while loop keeps looping while y is less than x, but careful! X is an
-    integer and can only be a whole number without decimals!
+  Hint: if (4/2 >2)
