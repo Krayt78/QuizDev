@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
-
+using System.Collections.Generic;
 namespace Quiz
 {
     public class Quiz : MonoBehaviour
@@ -22,6 +22,8 @@ namespace Quiz
         private QuizVariationsScriptableObject _quizVariations;
         private readonly int currentQuizDataIndex = -1;
         private difficultySetting difficulty;
+
+        public List<Color> colors;
         public event CorrectAnswerClicked OnCorrectAnswerClicked;
         public event WrongAnswerClicked OnWrongAnswerClicked;
 
