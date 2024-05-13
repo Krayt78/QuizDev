@@ -40,6 +40,7 @@ namespace Quiz
         private List<GameObject> _answerButtons = new List<GameObject>();
 
         private float remainingTimerTime;
+        private bool computerIsTyping = false;
 
         public void Initialize(QuizDataScriptableObject quizData, bool isFirstInitialization = false)
         {
@@ -89,6 +90,8 @@ namespace Quiz
         
         public IEnumerator ComputerTypeEffect(QuizDataScriptableObject quizDataScriptableObject)
         {
+            computerIsTyping = true;
+            ToggleButtonInteractibility(computerIsTyping);
             var amountOfCharacters = quizDataScriptableObject.Code.Length;
             var timeBetweenLetters = quizDataScriptableObject.timeToAppear / amountOfCharacters;
             
@@ -99,6 +102,17 @@ namespace Quiz
             {
                 CodeText.text += quizDataScriptableObject.Code[i];
                 yield return new WaitForSeconds(timeBetweenLetters);
+            }
+            computerIsTyping = false;
+            ToggleButtonInteractibility(computerIsTyping);
+        }
+
+        public void ToggleButtonInteractibility(bool computerIsTyping)
+        {
+            foreach (var answerButton in _answerButtons)
+            {
+                answerButton.GetComponent<Button>().interactable = !computerIsTyping;
+                answerButton.GetComponent<AnswerButton>().ToggleAplha();
             }
         }
 

@@ -76,14 +76,21 @@ namespace Quiz
                     
             }
             
+            QuizCanvasManager.ToggleButtonInteractibility(false);
             QuizCanvasManager.StopAllCoroutines();
             
             var quizData = Utils.SelectRandomQuizVariation(_quizVariations, currentQuizDataIndex);
+            
             QuizCanvasManager.Initialize(quizData);
             _correctAnswerIndex = quizData.CorrectAnswerIndex;
             _currentQuizDataData = quizData;
-            
-            //QuizCanvasManager.ShowLosePopup();
+            ResetTimer();
+        }
+        
+        private void ResetTimer()
+        {
+            DetermineDifficulty();
+            SetTimer();
         }
 
         private void OnBackButtonClicked()
@@ -136,6 +143,7 @@ namespace Quiz
         private async Task OnAnswerButtonClickedAsync(int answerIndex)
         {
             QuizCanvasManager.StopAllCoroutines();
+            QuizCanvasManager.ToggleButtonInteractibility(true);
             
             Debug.Log($"Answer button clicked with index: {answerIndex}");
             if(answerIndex == _correctAnswerIndex)
@@ -146,15 +154,16 @@ namespace Quiz
                 if (QuizCanvasManager.Background1.activeSelf)
                 {
                     await FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimationAsync(true);
+                    QuizCanvasManager.ToggleButtonInteractibility(false);
                     OnCorrectAnswerClicked?.Invoke();
                 }
                 if (QuizCanvasManager.Background2.activeSelf)
                 {
-                    
+                    OnCorrectAnswerClicked?.Invoke();
                 }
                 if (QuizCanvasManager.Background3.activeSelf)
                 {
-                    
+                    OnCorrectAnswerClicked?.Invoke();
                 }
                     
             }
