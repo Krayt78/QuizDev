@@ -107,6 +107,7 @@ namespace Quiz
 
         void SetTimer()
         {
+            StopAllCoroutines();
             if (difficulty == difficultySetting.Easy)
             {
                 StartCoroutine(QuizCanvasManager.StartTimer(90));
