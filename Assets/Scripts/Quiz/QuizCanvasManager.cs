@@ -26,6 +26,7 @@ namespace Quiz
         public TMP_Text CodeText;
         public TMP_Text QuestionText;
         public TMP_Text TimerText;
+        public TMP_Text TaskName;
         public HintPopup HintPopup;
         
         public GameObject Background1;
@@ -54,6 +55,7 @@ namespace Quiz
                 var answerButton = button.GetComponent<AnswerButton>();
                 answerButton.AnswerButtonComponent.onClick.AddListener(() => _OnAnswerButtonClicked(answerIndex));
                 answerButton.SetText(quizData.Answers[i]);
+                TaskName.text = quizData.name; 
 
                 switch (i)
                 {
