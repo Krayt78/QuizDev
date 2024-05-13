@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -60,11 +61,11 @@ namespace Quiz
             LoseGame();
         }
         
-        private void LoseGame()
+        private async Task LoseGame()
         {
             if (QuizCanvasManager.Background1.activeSelf)
             {
-                StartCoroutine(FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimation(false));  
+              await FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimationAsync(false);  
             }
             if (QuizCanvasManager.Background2.activeSelf)
             {
@@ -76,8 +77,8 @@ namespace Quiz
             }
             
             QuizCanvasManager.StopAllCoroutines();
-            var quizData = Utils.SelectRandomQuizVariation(_quizVariations, currentQuizDataIndex);
             
+            var quizData = Utils.SelectRandomQuizVariation(_quizVariations, currentQuizDataIndex);
             QuizCanvasManager.Initialize(quizData);
             _correctAnswerIndex = quizData.CorrectAnswerIndex;
             _currentQuizDataData = quizData;
@@ -128,6 +129,11 @@ namespace Quiz
 
         private void OnAnswerButtonClicked(int answerIndex)
         {
+            OnAnswerButtonClickedAsync(answerIndex);
+        }
+
+        private async Task OnAnswerButtonClickedAsync(int answerIndex)
+        {
             QuizCanvasManager.StopAllCoroutines();
             
             Debug.Log($"Answer button clicked with index: {answerIndex}");
@@ -136,10 +142,10 @@ namespace Quiz
                 Debug.Log("Correct answer!");
                 //do somethimg here
                 
-                OnCorrectAnswerClicked?.Invoke();
                 if (QuizCanvasManager.Background1.activeSelf)
                 {
-                    StartCoroutine(FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimation(true));  
+                    await FindObjectOfType<CodyAnimationController>().MoveCodyWhileInAnimationAsync(true);
+                    OnCorrectAnswerClicked?.Invoke();
                 }
                 if (QuizCanvasManager.Background2.activeSelf)
                 {
@@ -154,7 +160,7 @@ namespace Quiz
             else
             {
                 Debug.Log("Wrong answer!");
-                LoseGame();
+                await LoseGame();
             }
             
         }
